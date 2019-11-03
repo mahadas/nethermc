@@ -6,8 +6,7 @@ client.on("ready", () => {
 	client.user.setPresence({
        status: "online",
        game: {
-           name: "!ayuda | ImDuende",
-           url: "https://www.youtube.com/channel/UC6MP4GJim6NPPXm8V93JYcA",
+           name: "| play.nethermc.net |",
            type: "STREAMING"
        }
    });
