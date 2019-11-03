@@ -3,13 +3,24 @@ const client = new Discord.Client()
 const prefix = "!"
 
 client.on("ready", () => {
-	client.user.setPresence({
-       status: "online",
-       game: {
-           name: "| play.nethermc.net |",
-           type: "STREAMING"
-       }
-   });
+  console.log("Ya estoy listo!");
+
+setInterval(function () {
+let tomi = ['IP: play.nethermc.net.','NetherMC NetWork.']
+let random = Math.floor((Math.random() * tomi.length))
+let tomi2 = tomi[random];
+
+
+
+// En la zona de presence esto: 
+ client.user.setPresence( {
+        game: {
+            name: `${tomi2}`,
+            type: "PLAYING"
+        }
+})
+}, 5000  //cada cuanto cambia
+ )
 });
 
 
