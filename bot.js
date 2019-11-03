@@ -8,7 +8,7 @@ client.on("ready", () => {
 	client.user.setPresence({
        status: "online",
        game: {
-           name: "| play.lightsmc.ml |",
+           name: "| play.nethermc.net |",
            type: "STREAMING"
        }
    });
