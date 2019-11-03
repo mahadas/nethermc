@@ -1,109 +1,87 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const prefix = "!";
-
+const Discord = require('discord.js')
+const client = new Discord.Client()
+const prefix = "!"
 
 client.on("ready", () => {
-  console.log("consola cargada")
 	client.user.setPresence({
        status: "online",
        game: {
-           name: "| play.nethermc.net |",
+           name: "!ayuda | ImDuende",
+           url: "https://www.youtube.com/channel/UC6MP4GJim6NPPXm8V93JYcA",
            type: "STREAMING"
        }
    });
 });
 
 
-
-
-
-
 client.on("message", (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
-  if (message.content.startsWith(prefix + "encuesta")) {
-    let text = args.join(" ");
-    message.delete();
-    const ayy = client.emojis.find(emoji => emoji.name === "Visto");
-    const ayy1 = client.emojis.find(emoji => emoji.name === "Cross");
-    if (message.channel.id === '621338748994715658') {
-      const embed = new Discord.RichEmbed()
-        .setAuthor('❗ Pregunta: ❗',)
-        .setDescription(text)
-        .addField('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔', 'Utiliza para votar:')
-        .addField('Opción 1:', `${ayy}`)
-        .addField('Opción 2:', `${ayy1}`)
-        .setColor(2123412)
-        .setTimestamp()
-        .setFooter("IP: play.heavenmc.es", 'https://i.imgur.com/FwiJzpS.png')			
-        message.channel.send({embed})
-        .then(function (message) {
-            message.react(ayy);
-            message.react(ayy1);
-		  	});
-		}
-  }
-  if (command === "eliminar-canal") { 
-      const channelasd = message.channel;
-      const guild = message.guild;
-      const nombrecanal = channelasd.name;
-      let [name] = args; 
-      channelasd.delete('Canal eliminado')
-     .then(deleted => console.log(`El canal ${deleted.name} se elimino correctamente`))
-     const canaldeleteado = new Discord.RichEmbed()
-     .setTitle("Canal Eliminado:", 'https://i.imgur.com/FwiJzpS.png')
-     .addField("Autor:", `${message.author}`)
-     .addField("Canal:", `#${nombrecanal}`)
-     .setColor(10038562)
-     .setThumbnail(message.author.avatarURL)
-     .setFooter("IP: play.heavenmc.es", 'https://i.imgur.com/FwiJzpS.png');
-      client.channels.get('621353649729306634').send(canaldeleteado);
-
-      }
-  if (command === "presente") {
-    if (message.channel.id === '621353649729306634') {
-     message.delete();
-     var ahora = new Date();
-     var minuto = ahora.getUTCMinutes();  
-     var hora = ahora.getUTCHours() + 2;
-     var segundo = ahora.getUTCSeconds();
-     let mes = [`Enero`,`Febrero`,`Marzo`,`Abril`,`Mayo`,`Junio`,`Julio`,`Agosto`,`Septiembre`,`Octubre`,`Noviembre`,`Diciembre`];
-     let suffix = [`st`,`nd`,`rd`];
-     const darpresente = new Discord.RichEmbed()
-     .setTitle("Presente:", 'https://i.imgur.com/FwiJzpS.png')
-     .addField("Staff:", `  ${message.author}`)
-     .addField("Hora:", `  ${hora}h:${minuto}m:${segundo}s - Hora España`)
-     .addField("Dia:", `  ${ahora.getDate()} de ${mes[ahora.getMonth()]} de 2019 `)
-     .setColor(3066993)
-     .setThumbnail(message.author.avatarURL)
-     .setFooter("IP: play.heavenmc.es", 'https://i.imgur.com/FwiJzpS.png');
-     client.channels.get('621353649729306634').send(darpresente);
-      }
-  }   
-  
-  if (command === "ausente") {
-    if (message.channel.id === '621353649729306634') {
-     message.delete();
-     var ahora = new Date();
-     var minuto = ahora.getUTCMinutes();  
-     var hora = ahora.getUTCHours() + 2;
-     var segundo = ahora.getUTCSeconds();
-     let mes = [`Enero`,`Febrero`,`Marzo`,`Abril`,`Mayo`,`Junio`,`Julio`,`Agosto`,`Septiembre`,`Octubre`,`Noviembre`,`Diciembre`];
-     let suffix = [`st`,`nd`,`rd`];
-     const darpresente = new Discord.RichEmbed()
-     .setTitle("Ausente:", 'https://i.imgur.com/FwiJzpS.png')
-     .addField("Staff:", `  ${message.author}`)
-     .addField("Hora:", `  ${hora}h:${minuto}m:${segundo}s - Hora España`)
-     .addField("Dia:", `  ${ahora.getDate()} de ${mes[ahora.getMonth()]} de 2019 `)
-     .setColor(15158332)
-     .setThumbnail(message.author.avatarURL)
-     .setFooter("IP: play.heavenmc.es", 'https://i.imgur.com/FwiJzpS.png');
-     client.channels.get('621353649729306634').send(darpresente);
-      }
-  }   
+	if (command === 'conexion') {
+		let ping = Math.floor(message.client.ping);
+		message.channel.send({embed: {
+				color: 7419530,
+				description: `:satellite_orbital: Tu conexion es de ${ping} ms`
+			}});
+		return;
+	}
+	if (command === 'ayuda') {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('Aca tenes la ayuda necesaria', 'https://i.imgur.com/Lote53F.jpg')
+			.addField('!Redes', 'Mira las redes sociales de ImDuende_')
+			.addField('!Conexion', 'Mira tu conexion en el servidor')
+			.addField('!Youtube', 'Mira mi canal de youtube')
+			.addField('!Twitch', 'Mira mi canal de twitch')
+			.addField('!Twitter', 'Mira mi canal de twitter')
+			.setColor(0xff4d4d)
+			.setTimestamp()
+			.setFooter("Desarrollado por mahada#0641")
+	message.channel.send({embed})
+	return;
+	}
+	if (command === 'redes') {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('Aca tienes las rede sociales de ImDuende_', 'https://i.imgur.com/Lote53F.jpg')
+			.addField(` Youtube`, '[  Click para redirigirse](https://www.youtube.com/channel/UC6MP4GJim6NPPXm8V93JYcA)')
+			.addField(' Twitch', '[  Click para redirigirse](https://twitch.tv/imduende__)')
+			.addField(' Twitter', '[  Click para redirigirse](https://twitter.com/ImDuende__)')
+			.setColor(15105570)
+			.setTimestamp()
+			.setFooter("Desarrollado por mahada#0641")			
+	message.channel.send({embed})
+	return;
+	}
+	if (command === 'twitch') {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('Aca tienes mi canal de TWITCH', 'https://i.imgur.com/Lote53F.jpg')
+			.addField(' Twitch', '[  Click para redirigirse](https://twitch.tv/imduende__)')
+			.setColor(10181046)		
+			.setTimestamp()
+			.setFooter("Desarrollado por mahada#0641")		
+	message.channel.send({embed})
+	return;
+	}
+	if (command === 'youtube') {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('Aca tienes mi canal de YOUTUBE', 'https://i.imgur.com/Lote53F.jpg')
+			.addField('Youtube', '[  Click para redirigirse](https://www.youtube.com/channel/UC6MP4GJim6NPPXm8V93JYcA)')
+			.setColor(15158332)		
+			.setTimestamp()
+			.setFooter("Desarrollado por mahada#0641")		
+	message.channel.send({embed})
+	return;
+	}
+	if (command === 'twitter') {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('Aca tienes mi canal de TWITTER', 'https://i.imgur.com/Lote53F.jpg')
+			.addField(' Twitter', '[  Click para redirigirse](https://twitter.com/ImDuende__)')
+			.setColor(1146986)		
+			.setTimestamp()
+			.setFooter("Desarrollado por mahada#0641")
+	message.channel.send({embed})
+	return;
+	}
 });
-  
 
-   
+
 client.login(process.env.BOT_TOKEN);
