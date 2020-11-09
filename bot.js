@@ -49,6 +49,7 @@ client.on("message", (message) => {
 			client.destroy();
 			client.login(process.env.BOT_TOKEN);
 		}
+	}
 
 });
 
