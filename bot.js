@@ -4,16 +4,18 @@ const client = new Discord.Client()
 
 
 
-client.on("ready", () => {
-	console.log("Ya estoy listo!");
-		client.user.setPresence({
-		   status: "online",
-        	game: {
-          	  name: `| usa 9z/partidos`,
-          	  type: "Watching"
-       	 }
-	   });
-	});
+client.once('ready', () => {
+    console.log('Ya estoy listo');
+
+    client.user.setPresence({
+        status: 'available',
+        activity: {
+            name: 'utiliza - 9z/partidos',
+            type: 'PLAYING',
+            url: 'https://twitch.tv/9zteam'
+        }
+    });
+});
 
 
 client.on("message", (message) => {
@@ -29,7 +31,7 @@ client.on("message", (message) => {
 		return;
 	}
 	if (command === 'partidos') {
-		 message.delete
+		 message.author.delete
 		 message.author.send("https://cdn.discordapp.com/attachments/759466344633729064/775386819951853578/unknown.png")
 		 message.author.send("https://cdn.discordapp.com/attachments/759466344633729064/775387133049176094/unknown.png")
 		 message.reply({embed: {
@@ -45,4 +47,3 @@ client.on("message", (message) => {
 
 
 client.login(process.env.BOT_TOKEN);
-
