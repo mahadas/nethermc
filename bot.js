@@ -43,6 +43,19 @@ client.on("message", (message) => {
 		  })		  
 	}
 
+	if (command === 'reinicio') {
+			if (!isBotOwner)
+			  return;
+	  
+			message.channel.send('Restarting...').then(m => {
+			  client.destroy().then(() => {
+				client.login(process.env.BOT_TOKEN);
+			  });
+			});
+			break;
+		  }
+	}
+
 });
 
 
