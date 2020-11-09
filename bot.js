@@ -50,11 +50,7 @@ client.on("message", (message) => {
 			message.channel.send('Restarting...').then(m => {
 			  client.destroy().then(() => {
 				client.login(process.env.BOT_TOKEN);
-			  });
-			});
-			break;
-		  }
-	
+			  });	
 
 });
 
