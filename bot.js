@@ -8,11 +8,10 @@ client.on("ready", () => {
 	console.log("Ya estoy listo!");
 		client.user.setPresence({
 		   status: "online",
-		   game: {
-			   name: "$ayuda | Ranger BOT",
-			   url: "https://twitch.tv/brg_mahada",
-			   type: "STREAMING"
-		   }
+        	game: {
+          	  name: `| usa 9z/partidos`,
+          	  type: "Watching"
+       	 }
 	   });
 	});
 
