@@ -44,12 +44,13 @@ client.on("message", (message) => {
 	}
 
 	if (command === 'reinicio') {
-			if (!isBotOwner)
-			  return;
+		if(message.author.id === "323614229968191489") {
+
 			  client.destroy().then(() => {
 				client.login(process.env.BOT_TOKEN);
 			  });
 			}
+		}
 
 });
 
