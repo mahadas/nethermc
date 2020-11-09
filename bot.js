@@ -45,11 +45,9 @@ client.on("message", (message) => {
 
 	if (command === 'reinicio') {
 		if(message.author.id === "323614229968191489") {
-
-			  client.destroy().then(() => {
-				client.login(process.env.BOT_TOKEN);
-			  });
-			}
+			console.log("Reiniciando Bot")
+			client.destroy();
+			client.login(process.env.BOT_TOKEN);
 		}
 
 });
