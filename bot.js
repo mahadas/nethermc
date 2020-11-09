@@ -48,6 +48,14 @@ client.on("message", (message) => {
 			console.log("Reiniciando Bot")
 			client.destroy();
 			client.login(process.env.BOT_TOKEN);
+			client.user.setPresence({
+				status: 'available',
+				activity: {
+					name: 'utiliza - 9z/partidos',
+					type: 'PLAYING',
+					url: 'https://twitch.tv/9zteam'
+				}
+			});
 		}
 	}
 
